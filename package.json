@@ -7,7 +7,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "start": "http-serve /dist/index.html -p 8080 -o",
+    "start-cors": "http-serve /dist/index.html -p 8080 -o --cors",
+    "dist": "parcel build src/index.html",
+    "watch": "parcel watch src/index.html",
+    "parcel": "parcel src/index.html"
   },
   "jest": {
     "transform": {
@@ -23,7 +28,11 @@
     "@babel/preset-env": "^7.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "less": "^3.8.1",
+    "parcel-bundler": "^1.10.3",
+    "parcel-plugin-pug": "^0.3.1",
+    "pug": "^2.0.3"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0"
