@@ -1,7 +1,42 @@
-import { sum } from "../src/js"
+import { fromNumber } from "../src/js";
 
-describe('Test sum', () => {
-  test('Check that sum(1,3) = 4', () => {
-    expect(sum(1,3)).toBe(4);
+describe('Index', () => {
+  describe('fromNumber', () => {
+    test('Debería convertir número a romano - Letra I', () => {
+      expect(fromNumber(1)).toBe('I');
+      expect(fromNumber(2)).toBe('II');
+      expect(fromNumber(3)).toBe('III');
+    });
+    test('Debería convertir número a romano - Letra V', () => {
+      expect(fromNumber(4)).toBe('IV');
+      expect(fromNumber(5)).toBe('V');
+    });
+
+    test('Debería convertir número a romano - Letra X', () => {
+      expect(fromNumber(9)).toBe('IX');
+      expect(fromNumber(10)).toBe('X');
+      expect(fromNumber(11)).toBe('XI');
+    });
+
+    test('Debería convertir número a romano - Letra Extra', () => {
+      expect(fromNumber(2018)).toBe('MMXVIII');
+      expect(fromNumber(2648)).toBe('MMDCXLVIII');
+    });
+
+    test('Caso especial de 0', () => {
+      expect(fromNumber(0)).toBe('');
+    });
+
+    test('Caso especial de 12.456', () => {
+      expect(() => fromNumber(12.456)).toThrow();
+    });
+
+    test('Caso especial de número negativo', () => {
+      expect(() => fromNumber(-4)).toThrow();
+    });
+
+    test('Caso especial de no number', () => {
+      expect(() => fromNumber('No number')).toThrow();
+    });
   });
 });
